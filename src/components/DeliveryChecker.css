@@ -1,0 +1,51 @@
+.delivery-checker {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.delivery-title {
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.pincode-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.pincode-input {
+  flex-grow: 1;
+  padding: 0.5rem var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+}
+
+.pincode-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.check-btn {
+  padding: 0.5rem 1rem;
+}
+
+.check-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pincode-result {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.text-success { color: var(--color-success); }
+.text-error { color: var(--color-error); }
+
+.delivery-disclaimer {
+  font-size: 0.75rem;
+}

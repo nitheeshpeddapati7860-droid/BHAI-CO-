@@ -1,0 +1,133 @@
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-surface);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
+}
+
+.cart-drawer.open {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.cart-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-title {
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.qty-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.qty-selector button {
+  padding: 4px 12px;
+  font-weight: bold;
+}
+
+.qty-selector span {
+  padding: 0 12px;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  color: var(--color-text-muted);
+}
+.remove-btn:hover {
+  color: var(--color-error);
+}
+
+.cart-footer {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.subtotal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.125rem;
+}

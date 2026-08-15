@@ -1,0 +1,23 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+}

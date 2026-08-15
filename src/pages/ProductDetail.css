@@ -1,0 +1,123 @@
+.pdp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .pdp-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.pdp-main-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.pdp-thumbnails {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.pdp-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.pdp-title {
+  font-size: 1.75rem;
+  color: var(--color-primary-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.pdp-price-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.pdp-price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.pdp-compare-price {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.pdp-discount {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-discount);
+  background-color: rgba(211, 47, 47, 0.1);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.pdp-description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.contents-title {
+  font-family: var(--font-family-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-sm);
+}
+
+.contents-list {
+  list-style-type: disc;
+  padding-left: var(--spacing-xl);
+  color: var(--color-text-main);
+}
+
+.contents-list li {
+  margin-bottom: 4px;
+}
+
+.prepaid-notice {
+  background-color: var(--color-background);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-primary);
+}
+
+.mobile-sticky-buy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 90;
+  box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.mobile-sticky-buy .price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.mobile-sticky-buy .btn {
+  width: 60%;
+}
