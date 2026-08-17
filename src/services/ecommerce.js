@@ -169,16 +169,60 @@ export const getProductByHandle = async (handle) => {
 };
 
 export const getCollection = async (collectionHandle) => {
-  // For now, reuse getProducts and let the UI filter based on mock-like logic,
-  // or build a true collection query here. Since we are using tags, getProducts is safe.
-  const allProducts = await getProducts();
-  
-  if (collectionHandle === 'under-399') {
-    return allProducts.filter(p => p.price <= 399);
-  } else if (collectionHandle === 'premium-picks') {
-    return allProducts.filter(p => p.price >= 599);
+  const query = `
+    query getCollectionByHandle($handle: String!) {
+      collection(handle: $handle) {
+        products(first: 20) {
+          edges {
+            node {
+              id
+              handle
+              title
+              description
+              descriptionHtml
+              tags
+              totalInventory
+              images(first: 3) {
+                edges {
+                  node {
+                    url
+                  }
+                }
+              }
+              variants(first: 1) {
+                edges {
+                  node {
+                    id
+                    title
+                    price {
+                      amount
+                    }
+                    compareAtPrice {
+                      amount
+                    }
+                    sku
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await fetchShopify(query, { handle: collectionHandle });
+    if (!data || !data.collection) {
+      // If collection doesn't exist in Shopify, return all products as fallback
+      const allProducts = await getProducts();
+      return allProducts;
+    }
+    return data.collection.products.edges.map(edge => mapShopifyProduct(edge.node));
+  } catch (error) {
+    console.error(error);
+    return [];
   }
-  return allProducts;
 };
 
 // Local Cart Management
