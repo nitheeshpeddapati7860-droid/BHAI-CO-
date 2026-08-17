@@ -274,14 +274,13 @@ export const checkout = async (cartItems) => {
   }
 
   const query = `
-    mutation checkoutCreate($input: CheckoutCreateInput!) {
-      checkoutCreate(input: $input) {
-        checkout {
+    mutation cartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart {
           id
-          webUrl
+          checkoutUrl
         }
-        checkoutUserErrors {
-          code
+        userErrors {
           field
           message
         }
@@ -289,18 +288,18 @@ export const checkout = async (cartItems) => {
     }
   `;
 
-  const lineItems = cartItems.map(item => ({
-    variantId: item.variantId,
+  const lines = cartItems.map(item => ({
+    merchandiseId: item.variantId,
     quantity: item.quantity
   }));
 
   try {
     const data = await fetchShopify(query, {
-      input: { lineItems }
+      input: { lines }
     });
 
-    if (data.checkoutCreate.checkoutUserErrors.length > 0) {
-      throw new Error(data.checkoutCreate.checkoutUserErrors[0].message);
+    if (data.cartCreate.userErrors.length > 0) {
+      throw new Error(data.cartCreate.userErrors[0].message);
     }
 
     localStorage.removeItem('bco_cart');
@@ -308,7 +307,7 @@ export const checkout = async (cartItems) => {
     // Return the URL so the UI can redirect the user to the real Shopify checkout page
     return { 
       success: true, 
-      redirectUrl: data.checkoutCreate.checkout.webUrl 
+      redirectUrl: data.cartCreate.cart.checkoutUrl 
     };
   } catch (error) {
     console.error("Checkout error:", error);
