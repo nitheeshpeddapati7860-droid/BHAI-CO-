@@ -76,7 +76,6 @@ export const getProducts = async () => {
             description
             descriptionHtml
             tags
-            totalInventory
             images(first: 3) {
               edges {
                 node {
@@ -126,7 +125,6 @@ export const getProductByHandle = async (handle) => {
         description
         descriptionHtml
         tags
-        totalInventory
         images(first: 5) {
           edges {
             node {
