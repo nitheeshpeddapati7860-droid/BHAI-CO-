@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { X, Trash2, ShoppingBag } from 'lucide-react';
-import { getCart, removeFromCart, updateCartItem } from '../services/ecommerce';
+import { getCart, removeFromCart, updateCartItem, checkout } from '../services/ecommerce';
 import './CartDrawer.css';
 
 const CartDrawer = ({ isOpen, onClose }) => {
